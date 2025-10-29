@@ -25,26 +25,25 @@ public class AutovermietungModel {
 		public void leseAusDatei(String typ) throws IOException {
             try (BufferedReader ein = new BufferedReader(new FileReader("AutosAusgabe.csv"))) {
 
-                // Erste Zeile: Kennzeichen, Typ, Modell, Preis, (leer)
+            
                 String ersteZeile = ein.readLine();
 
 
                 String[] teil1 = ersteZeile.split(";");
 
-                // Zweite Zeile: Vermietungen
                 String zweiteZeile = ein.readLine();
 
 
 
                 String[] vermietetArr = zweiteZeile.split(";");
 
-                // Auto-Objekt erzeugen
+               
                 this.auto = new Auto(
-                    teil1[0],                        // Kennzeichen
-                    teil1[1],                        // Typ
-                    teil1[2],                        // Modell
-                    Float.parseFloat(teil1[3]),      // Tagespreis
-                    vermietetArr                     // Vermietet von-bis
+                    teil1[0],                        
+                    teil1[1],                      
+                    teil1[2],                       
+                    Float.parseFloat(teil1[3]),      
+                    vermietetArr                     
                 );
             }
         }
