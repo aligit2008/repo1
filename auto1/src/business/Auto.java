@@ -71,8 +71,8 @@ public class Auto {
 	  		return this.getKennzeichen() + trenner 
 	  			+ this.getTyp() + trenner
 	  			+ this.getModell() + trenner
-	  		    + this.getTagespreis() + trenner + "\n"
-	  		    + this.getVermietetVonBisAlsString(trenner) + "\n";
+	  		    + this.getTagespreis() + trenner 
+	  		    + this.getVermietetVonBisAlsString('_') + "\n";
 	  	}
 	}
 

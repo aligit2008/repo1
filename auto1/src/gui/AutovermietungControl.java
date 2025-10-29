@@ -32,11 +32,13 @@ public class AutovermietungControl {
 			else{
 	   			atView.zeigeInformationsfensterAn("Noch nicht implementiert!");
 			}}
+		
 			catch(IOException exc){
 				atView.zeigeFehlermeldungsfensterAn(
 					"IOException beim Lesen!");
 			}
 			catch(Exception exc){
+				System.out.println(exc);
 				atView.zeigeFehlermeldungsfensterAn(
 					"Unbekannter Fehler beim Lesen!");
 			}

@@ -22,16 +22,32 @@ public class AutovermietungModel {
 		
 		
 		
-		public void leseAusDatei(String typ) throws IOException{
-	      			BufferedReader ein = new BufferedReader(new FileReader("Auto.csv"));
-	      			String[] zeile = ein.readLine().split(";");
-	      			this.auto = new Auto(zeile[0], 
-	      				zeile[1], 
-	      				zeile[2], 
-	      				Float.parseFloat(zeile[3]), 
-	      				zeile[4].split("_"));
-	      				ein.close();
-			}
+		public void leseAusDatei(String typ) throws IOException {
+            try (BufferedReader ein = new BufferedReader(new FileReader("AutosAusgabe.csv"))) {
+
+                // Erste Zeile: Kennzeichen, Typ, Modell, Preis, (leer)
+                String ersteZeile = ein.readLine();
+
+
+                String[] teil1 = ersteZeile.split(";");
+
+                // Zweite Zeile: Vermietungen
+                String zweiteZeile = ein.readLine();
+
+
+
+                String[] vermietetArr = zweiteZeile.split(";");
+
+                // Auto-Objekt erzeugen
+                this.auto = new Auto(
+                    teil1[0],                        // Kennzeichen
+                    teil1[1],                        // Typ
+                    teil1[2],                        // Modell
+                    Float.parseFloat(teil1[3]),      // Tagespreis
+                    vermietetArr                     // Vermietet von-bis
+                );
+            }
+        }
 		public void schreibeAutoInCsvDatei() throws IOException {
 			
 				BufferedWriter aus 
